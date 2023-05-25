@@ -1,10 +1,13 @@
 import Header from "../components/Header";
+import Main from "../components/Main";
+import Footer from "../components/Footer";
 
 function Home() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col h-screen">
       <Header />
-      <h1 className="underline"> Home</h1>
+      <Main />
+      <Footer />
     </div>
   );
 }
