@@ -1,8 +1,8 @@
 function Footer() {
   return (
-    <footer className="bg-medium p-5 text-dark">
+    <footer className="bg-dark p-5 text-dark">
       <div className="container">
-        <span className="text-muted">Lemon Mind</span>
+        <span className="text-muted text-medium">Lemon Mind</span>
       </div>
     </footer>
   );
