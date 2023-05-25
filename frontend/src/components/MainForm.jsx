@@ -4,10 +4,14 @@ function MainForm() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+    reset();
+  };
   return (
     <div className="p-5 bg-dark rounded flex flex-col gap-3 justify-items-center items-center">
       <h1 className="text-2xl text-light">Uzupełnij dane transportu</h1>
