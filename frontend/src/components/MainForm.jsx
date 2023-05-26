@@ -32,8 +32,8 @@ function MainForm() {
   }, [planeType]);
 
   return (
-    <div className="p-5 bg-dark rounded flex flex-col gap-3 justify-items-center items-center">
-      <h1 className="text-2xl text-light">Uzupełnij dane transportu</h1>
+    <div className="p-5 bg-dark rounded flex flex-col gap-5 justify-items-center items-center">
+      <h1 className="text-3xl text-light">Uzupełnij dane transportu</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-10 ">
         <div className="grid grid-cols-2 gap-10 ">
           <div className="flex flex-col gap-5">
