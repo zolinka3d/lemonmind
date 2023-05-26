@@ -51,6 +51,17 @@ const validationSchema = yup.object({
         return weekday >= 1 && weekday <= 5;
       }
     ),
+
+  loads: yup
+    .array()
+    .of(
+      yup.object().shape({
+        loadName: yup.string().required("Wymagane"),
+      })
+    )
+    .test("is-not-empty", "Dodaj przynajmniej jeden ładunek", (value) => {
+      return value.length > 0;
+    }),
 });
 
 export default validationSchema;
