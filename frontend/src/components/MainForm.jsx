@@ -1,14 +1,18 @@
 import { useForm, useFieldArray } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import validationSchema from "./MainForm.validation";
+import Load from "./Load";
+import { useEffect, useState } from "react";
 
 function MainForm() {
+  const [currentPlaneType, setCurrentPlaneType] = useState("Airbus A380");
   const {
     register,
     handleSubmit,
     control,
     reset,
     formState: { errors },
+    watch,
   } = useForm({ resolver: yupResolver(validationSchema) });
 
   const { fields, append, remove } = useFieldArray({
@@ -18,8 +22,15 @@ function MainForm() {
 
   const onSubmit = (data) => {
     console.log(data);
-    // reset();
+    reset();
   };
+
+  const planeType = watch("planeType");
+
+  useEffect(() => {
+    setCurrentPlaneType(planeType);
+  }, [planeType]);
+
   return (
     <div className="p-5 bg-dark rounded flex flex-col gap-3 justify-items-center items-center">
       <h1 className="text-2xl text-light">Uzupełnij dane transportu</h1>
@@ -89,38 +100,19 @@ function MainForm() {
 
           <ul className="flex flex-col gap-3 overflow-y-auto max-h-72 p-1 ">
             {fields.map((item, index) => (
-              <li key={item.id} className="bg-medium p-3 rounded">
-                <div className="flex justify-between items-center">
-                  <label className="text-light">
-                    Nazwa ładunku {index + 1}
-                  </label>
-                  <input
-                    className="rounded p-2 "
-                    type="text"
-                    {...register(`loads.${index}.loadName`, {
-                      required: "Wymagane",
-                    })}
-                    defaultValue={item.loadName}
-                  />
-                </div>
-                <div className="flex justify-between">
-                  <button
-                    className="text-red-500"
-                    onClick={() => remove(index)}
-                  >
-                    Usuń ładunek {index + 1}
-                  </button>
-                  {errors.loads && errors.loads[index] && (
-                    <p className="text-sm text-yellow">
-                      {errors.loads[index].loadName.message}
-                    </p>
-                  )}
-                </div>
-              </li>
+              <Load
+                key={item.id}
+                item={item}
+                index={index}
+                errors={errors}
+                remove={remove}
+                register={register}
+                typePlane={currentPlaneType}
+              />
             ))}
             <button
               type="button"
-              onClick={() => append({ loadName: "" })}
+              onClick={() => append({ loadName: "", loadWeight: "" })}
               className="bg-normal text-dark font-bold p-3 rounded"
             >
               Dodaj ładunek

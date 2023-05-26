@@ -39,7 +39,7 @@ const validationSchema = yup.object({
     .test("is-future-date", "Wybierz datę z przyszłości", (value) => {
       const inputDate = new Date(value);
       const today = new Date();
-      today.setHours(0, 0, 0, 0); // resetuje czas dzisiejszej daty do północy
+      today.setHours(0, 0, 0, 0);
       return inputDate >= today;
     })
     .test(
@@ -56,7 +56,20 @@ const validationSchema = yup.object({
     .array()
     .of(
       yup.object().shape({
-        loadName: yup.string().required("Wymagane"),
+        loadName: yup.string().required("Pole wymagane"),
+        loadWeight: yup
+          .string()
+          .test(
+            "is-number",
+            "Waga musi być liczbą",
+            (value) => !value || !isNaN(Number(value))
+          )
+          .required("Pole wymagane")
+          .transform((value) => (isNaN(value) ? undefined : value))
+          .min(1, "Waga musi być większa od 0")
+
+          .typeError("pole musi być liczbą"),
+        loadType: yup.string().required("Pole wymagane"),
       })
     )
     .test("is-not-empty", "Dodaj przynajmniej jeden ładunek", (value) => {
