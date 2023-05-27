@@ -51,8 +51,8 @@ function Load({ index, item, remove, errors, register, typePlane }) {
             className="rounded p-2"
             {...register(`loads.${index}.loadType`)}
           >
-            <option value="normalny">ładunek zwykły</option>
-            <option value="niebezpieczny">ładunek niebezpieczny</option>
+            <option value="ładunek zwykły">ładunek zwykły</option>
+            <option value="ładunek niebezpieczny">ładunek niebezpieczny</option>
           </select>
         </div>
 
