@@ -22,7 +22,14 @@ function MainForm() {
 
   const onSubmit = (data) => {
     console.log(data);
-    reset();
+    reset({
+      transportFrom: "",
+      transportTo: "",
+      planeType: "",
+      file: "",
+      date: "",
+      loads: [],
+    });
   };
 
   const planeType = watch("planeType");
