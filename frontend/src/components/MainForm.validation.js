@@ -25,7 +25,7 @@ const validationSchema = yup.object({
   file: yup
     .mixed()
     .test("is-valid-type", "Zły typ pliku", (value) =>
-      value ? areValidFiles(value, "image") : false
+      value ? areValidFiles(value, "image") : true
     ),
   date: yup
     .mixed()
