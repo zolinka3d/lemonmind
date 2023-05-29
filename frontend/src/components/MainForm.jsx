@@ -42,12 +42,12 @@ function MainForm() {
               <input
                 className="rounded p-2 "
                 type="text"
-                {...register("trasportFrom")}
+                {...register("transportFrom")}
               />{" "}
             </div>
-            {errors.trasportFrom && (
+            {errors.transportFrom && (
               <p className="text-sm text-yellow">
-                {errors.trasportFrom.message}
+                {errors.transportFrom.message}
               </p>
             )}
             <div className="flex justify-between items-center">

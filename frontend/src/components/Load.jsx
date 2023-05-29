@@ -1,5 +1,4 @@
 import _ from "lodash";
-import { useEffect } from "react";
 
 function Load({ index, item, remove, errors, register, typePlane }) {
   return (

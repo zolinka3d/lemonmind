@@ -10,7 +10,7 @@ function areValidFiles(files, fileType) {
 }
 
 const validationSchema = yup.object({
-  trasportFrom: yup
+  transportFrom: yup
     .string()
     .required("Pole wymagane")
     .min(3, "To pole nie może być krótsze niż 3 znaki"),
