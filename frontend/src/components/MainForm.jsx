@@ -32,10 +32,13 @@ function MainForm() {
   }, [planeType]);
 
   return (
-    <div className="p-5 bg-dark rounded flex flex-col gap-5 justify-items-center items-center">
-      <h1 className="text-3xl text-light">Uzupełnij dane transportu</h1>
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-10 ">
-        <div className="grid grid-cols-2 gap-10 ">
+    <div className="p-5 flex flex-col gap-5 justify-items-center items-center">
+      <h1 className="text-3xl text-dark">Uzupełnij dane transportu</h1>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col gap-10 bg-dark rounded p-10 "
+      >
+        <div className="grid lg:grid-cols-2 gap-10 grid=cols-1">
           <div className="flex flex-col gap-5">
             <div className="flex justify-between items-center">
               <label className="text-light">Transport z</label>
@@ -98,7 +101,7 @@ function MainForm() {
             )}
           </div>
 
-          <ul className="flex flex-col gap-3 overflow-y-auto max-h-72 p-1 ">
+          <ul className="flex flex-col gap-3 overflow-y-auto lg:max-h-72 p-1 max-h-96">
             {fields.map((item, index) => (
               <Load
                 key={item.id}
