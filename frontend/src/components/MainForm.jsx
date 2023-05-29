@@ -25,7 +25,7 @@ function MainForm() {
     reset({
       transportFrom: "",
       transportTo: "",
-      planeType: "",
+      planeType: "Airbus A380",
       file: "",
       date: "",
       loads: [],
