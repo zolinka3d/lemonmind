@@ -6,6 +6,16 @@ import { useEffect, useState } from "react";
 
 function MainForm() {
   const [currentPlaneType, setCurrentPlaneType] = useState("Airbus A380");
+
+  const defaultValues = {
+    transportFrom: "",
+    transportTo: "",
+    planeType: "Airbus A380",
+    file: "",
+    date: "",
+    loads: [],
+  };
+
   const {
     register,
     handleSubmit,
@@ -13,7 +23,10 @@ function MainForm() {
     reset,
     formState: { errors },
     watch,
-  } = useForm({ resolver: yupResolver(validationSchema) });
+  } = useForm({
+    resolver: yupResolver(validationSchema),
+    defaultValues,
+  });
 
   const { fields, append, remove } = useFieldArray({
     control,
@@ -22,14 +35,8 @@ function MainForm() {
 
   const onSubmit = (data) => {
     console.log(data);
-    reset({
-      transportFrom: "",
-      transportTo: "",
-      planeType: "Airbus A380",
-      file: "",
-      date: "",
-      loads: [],
-    });
+
+    reset();
   };
 
   const planeType = watch("planeType");
